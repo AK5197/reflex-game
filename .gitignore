@@ -5,3 +5,16 @@ __pycache__/
 *.egg-info/
 .env
 .DS_Store
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+# Envs
+venv/
+.venv/
+.env
+# Daten/Builds
+*.db
+dist/
+build/
