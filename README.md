@@ -66,10 +66,6 @@ python3 server.py
 - `/api/top?player=P1&limit=10` → Top 10 für Spieler P1  
 - `/export.csv` → CSV-Export aller Daten  
 
-## Screenshots
-
-![Weboberfläche](docs/web.png)  <!-- hier Screenshot einfügen -->
-
 ## Lizenz
 
 GPL-3.0 (oder MIT, je nach Wahl)
