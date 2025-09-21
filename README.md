@@ -1,11 +1,20 @@
 ## Reflex-Game (Flask + WebSockets)
-Steuere und spiele ein Reaktionsspiel über den Browser. Optional kann reale Hardware (LED/Buttons) angebunden werden.  
-Server: **Python (Flask)**, Echtzeit: **WebSockets (flask-sock)**, Speicherung: **SQLite**.
+Ein IoT-basiertes Reaktionsspiel mit Highscore-System.  
+Spieler drücken so schnell wie möglich nach einem Startsignal – die Zeiten werden in einer SQLite-Datenbank gespeichert und live im Browser angezeigt.  
+
+## Motivation
+Inspiriert vom F1-Reaktionstest wollten wir ein eigenes Reaktionsspiel bauen, das Technik, IoT und Spielspass verbindet.  
+
+## Architektur
+- **Spiellogik (Pico / Pi mit LEDs & Tastern)** → misst Reaktionszeiten  
+- **MQTT** → überträgt Daten an den Server  
+- **Flask (server.py)** → verarbeitet und speichert in SQLite  
+- **REST API & WebSocket** → liefern Daten an den Browser  
+- **Weboberfläche** → zeigt Historie und Ranglisten (Overall, P1, P2)  
 
 ---
 
 ## Hardware
-
 ### Minimal (nur Web)
 - Rechner/Raspberry Pi
 - Aktueller Browser (Chrome/Firefox/Edge/Safari)
@@ -44,4 +53,32 @@ Steuerung über Buttons/Slider/Farbwahl (falls LEDs), automatische Events ohne s
 ### 1) System vorbereiten
 ```bash
 sudo apt update
-sudo apt install -y python3 python3-venv python3-pip
+sudo apt install -y python3 python3-venv python3-pip mosquitto
+git clone https://github.com/dein-user/reflex-game.git
+cd reflex-game
+pip install -r requirements.txt
+python3 server.py
+```
+## API
+
+- `/api/scores?limit=1000` → gesamte Historie  
+- `/api/top?limit=10` → Top 10  
+- `/api/top?player=P1&limit=10` → Top 10 für Spieler P1  
+- `/export.csv` → CSV-Export aller Daten  
+
+## Screenshots
+
+![Weboberfläche](docs/web.png)  <!-- hier Screenshot einfügen -->
+
+## Lizenz
+
+GPL-3.0 (oder MIT, je nach Wahl)
+
+## Credits
+
+- [Flask](https://flask.palletsprojects.com/)  
+- [flask-sock](https://flask-sock.readthedocs.io/)  
+- [Mosquitto MQTT](https://mosquitto.org/)  
+- [SQLite](https://sqlite.org/)
+
+
