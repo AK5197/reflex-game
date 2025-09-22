@@ -15,6 +15,7 @@ Inspiriert vom F1-Reaktionstest wollten wir ein eigenes Reaktionsspiel bauen, da
 ---
 
 ## Hardware
+![Steckbrett und Raspberry](https://github.com/AK5197/reflex-game/blob/main/Plan.png)
 ### Minimal (nur Web)
 - Rechner/Raspberry Pi
 - Aktueller Browser (Chrome/Firefox/Edge/Safari)
